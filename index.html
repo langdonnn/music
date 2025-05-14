@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>langdonn*</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #000000;
+            --accent: #a88784;
+            --white: #eaeaea;
+            --glass: #000000;
+            --blur: blur(10px);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary), var(--secondary) 80%);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            z-index: 2;
+        }
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            background: none;
+            color: var(--white);
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: unset;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 24px var(--accent), 0 1px 0 #222;
+            animation: logoCoolFadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        @keyframes logoCoolFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.8) rotate(-8deg);
+                filter: blur(8px) brightness(1.5);
+                text-shadow: 0 0 40px var(--accent);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(10px) scale(1.08) rotate(2deg);
+                filter: blur(2px) brightness(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+                filter: blur(0) brightness(1);
+                text-shadow: 0 2px 24px var(--accent), 0 1px 0 #222;
+            }
+        }
+        .buttons {
+            display: flex;
+            gap: 1.2rem;
+        }
+        .btn {
+            position: relative;
+            background: var(--glass);
+            border: none;
+            outline: none;
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.9rem 2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 16px 0 rgba(255,111,97,0.08);
+            backdrop-filter: var(--blur);
+            transition: background 0.2s, transform 0.15s, box-shadow 0.3s;
+            overflow: visible;
+            z-index: 1;
+            animation: btnPopIn 1s cubic-bezier(.68,-0.55,.27,1.55);
+            animation-delay: 0.3s;
+            animation-fill-mode: backwards;
+        }
+        .btn:nth-child(2) { animation-delay: 0.45s; }
+        .btn:nth-child(3) { animation-delay: 0.6s; }
+        @keyframes btnPopIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(40px) rotate(-6deg);
+                filter: blur(8px);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1.08) translateY(-6px) rotate(2deg);
+                filter: blur(1.5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0deg);
+                filter: blur(0);
+            }
+        }
+        .btn:hover, .btn:focus {
+            background: rgba(59, 59, 70, 0.95);
+            transform: translateY(-2px) scale(1.07) rotate(-2deg);
+            box-shadow: 0 4px 32px 0 var(--accent), 0 1px 0 #222;
+        }
+        .btn-content {
+            position: absolute;
+            left: 50%;
+            top: 110%;
+            transform: translateX(-50%) scale(0.95);
+            opacity: 0;
+            pointer-events: none;
+            min-width: 220px;
+            background: var(--glass);
+            border-radius: 1rem;
+            box-shadow: 0 2px 24px 0 rgba(255,111,97,0.13);
+            padding: 1rem 1.2rem;
+            transition: opacity 0.35s cubic-bezier(.68,-0.55,.27,1.55), transform 0.35s cubic-bezier(.68,-0.55,.27,1.55);
+            backdrop-filter: var(--blur);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            animation: none;
+        }
+        .btn:hover .btn-content, .btn:focus .btn-content {
+            opacity: 1;
+            transform: translateX(-50%) scale(1.04) rotate(-2deg);
+            pointer-events: auto;
+            animation: btnContentPop 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        @keyframes btnContentPop {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.8) rotate(8deg);
+                filter: blur(8px);
+            }
+            80% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.08) rotate(-3deg);
+                filter: blur(1.5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.04) rotate(-2deg);
+                filter: blur(0);
+            }
+        }
+        .music-embed {
+            width: 180px;
+            height: 48px;
+            background: rgba(40,40,60,0.7);
+            border-radius: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bdbdbd;
+            font-size: 0.98rem;
+            font-weight: 500;
+            box-shadow: 0 1px 8px 0 var(--accent);
+            animation: fadeInUpCool 0.8s;
+        }
+        .socials-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            align-items: flex-start;
+        }
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #bdbdbd;
+            animation: fadeInUpCool 0.8s;
+        }
+        .social-icon {
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #232336;
+            color: var(--accent);
+            font-size: 1.1rem;
+            box-shadow: 0 1px 8px 0 var(--accent);
+            margin-right: 0.1rem;
+            animation: iconPulse 1.8s infinite alternate cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        @keyframes iconPulse {
+            0% { box-shadow: 0 1px 8px 0 var(--accent); transform: scale(1); }
+            100% { box-shadow: 0 2px 16px 0 var(--accent); transform: scale(1.13) rotate(-6deg); }
+        }
+        .about-me-content {
+            color: #bdbdbd;
+            font-size: 1rem;
+            font-style: italic;
+            text-align: center;
+            animation: fadeInUpCool 0.8s;
+        }
+        @keyframes fadeInUpCool {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95) skewY(4deg);
+                filter: blur(8px);
+            }
+            70% {
+                opacity: 1;
+                transform: translateY(-4px) scale(1.04) skewY(-2deg);
+                filter: blur(1.5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) skewY(0deg);
+                filter: blur(0);
+            }
+        }
+        @media (max-width: 600px) {
+            .logo { font-size: 1.3rem; }
+            .btn { font-size: 0.95rem; padding: 0.7rem 1.1rem; }
+            .btn-content { min-width: 140px; padding: 0.7rem 0.7rem; }
+            .music-embed { width: 110px; height: 36px; font-size: 0.85rem;}
+        }
+        /* Remove background shapes for minimalism */
+        .bg-shape { display: none; }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <div class="logo">langdonn*</div>
+        <div class="buttons">
+            <!-- Music Button -->
+            <button class="btn" tabindex="0">
+                music
+                <div class="btn-content" aria-hidden="true">
+                    <div class="music-embed">
+                        <span>Embed your music here</span>
+                    </div>
+                    <div class="music-embed">
+                        <span>Another music embed</span>
+                    </div>
+                </div>
+            </button>
+            <!-- Socials Button -->
+            <button class="btn" tabindex="0">
+                socials
+                <div class="btn-content" aria-hidden="true">
+                    <div class="socials-list">
+                        <div class="social-row" onclick="window.open('https://instagram.com/langdonn.music','_blank')" style="cursor:pointer;">
+                            <span class="social-icon">
+                                <!-- Instagram SVG -->
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="2" width="20" height="20" rx="6" stroke="#bdbdbd" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="5" stroke="#bdbdbd" stroke-width="2"/>
+                                    <circle cx="17" cy="7" r="1.2" fill="#bdbdbd"/>
+                                </svg>
+                            </span>
+                            @ilylangdonn
+                        </div>
+                        <div class="social-row">
+                            <span class="social-icon">
+                                <!-- Twitter/X SVG -->
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 4L20 20M20 4L4 20" stroke="#bdbdbd" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            @ilylangdonn
+                        </div>
+                        <div class="social-row">
+                            <span class="social-icon">
+                                <!-- TikTok SVG -->
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9 3v12a3 3 0 1 0 3-3h-1" stroke="#bdbdbd" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M15 3a6 6 0 0 0 6 6" stroke="#bdbdbd" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            @weluvlangdonn
+                        </div>
+                    </div>
+                </div>
+            </button>
+            <!-- About Me Button -->
+            <button class="btn" tabindex="0">
+                about me
+                <div class="btn-content" aria-hidden="true">
+                    <div class="about-me-content">
+                        not found, but not lost. 
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
